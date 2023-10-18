@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import DefaultCard from "./components/defaultCard";
+import weatherApi from "./services/weatherApi.js";
+import "./App.css";
 
 function App() {
+  const [lat, setLat] = useState(0);
+  const [lon, setLon] = useState(0);
+  const [weather, setWeather] = useState({
+    clouds: { all: 100 },
+    coord: { lon: -73.9955, lat: 45.2209 },
+    dt: 0,
+    main: {
+      feels_like: 287.28,
+      grnd_level: 1014,
+      humidity: 68,
+      pressure: 1019,
+      sea_level: 1019,
+      temp: 287.97,
+      temp_max: 288.75,
+      temp_min: 286.98,
+    },
+    name: "Saint-Timothée",
+    sys: { country: "CA", sunrise: 1697627719, sunset: 1697666802 },
+    timezone: -14400,
+    visibility: 10000,
+    weather: [
+      {
+        description: "light rain",
+        icon: "10n",
+        id: 500,
+        main: "Rain",
+      },
+    ],
+    wind: { speed: 3.64, deg: 224, gust: 5.91 },
+  });
+
+  if (navigator.geolocation) {
+    var success = function (position) {
+      setLat(position.coords.latitude);
+      setLon(position.coords.longitude);
+    };
+    navigator.geolocation.getCurrentPosition(success, function (msg) {
+      console.error(msg);
+    });
+  }
+
+  useEffect(() => {
+    weatherApi.currentWeather({ lat, lon }).then((res) => {
+      setWeather(res);
+    });
+  }, [lat, lon]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="cardContainer">
+        <DefaultCard weather={weather} />
+      </div>
     </div>
   );
 }
