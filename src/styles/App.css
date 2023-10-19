@@ -1,0 +1,15 @@
+:root {
+  --white: rgb(248, 245, 245);
+  --black-transparency: rgba(8, 8, 8, 0.75); 
+  --black: rgb(8, 8, 8); 
+}
+
+body {
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}

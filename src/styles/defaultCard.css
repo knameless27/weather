@@ -1,0 +1,72 @@
+@import "./App.css";
+
+.card {
+  gap: 50px;
+  padding: 15px;
+  display: grid;
+  font-size: 2rem;
+  overflow: hidden;
+  max-width: 1800px;
+  transition: 0.39s;
+  grid: "info image";
+  position: relative;
+  border-radius: 15px;
+  background-color: var(--white);
+  box-shadow: 31px 38px 5px 0px var(--black-transparency);
+}
+
+.card:hover {
+  padding: 1%;
+}
+
+.windData {
+  display: grid;
+  grid: "titleWind titleWind titleWind" auto;
+}
+
+.titleWind {
+  height: 1px;
+  grid-area: titleWind;
+}
+
+.itemWind {
+  margin-right: 20px;
+  white-space: nowrap;
+}
+
+.city {
+  white-space: nowrap;
+}
+
+.basicInfo {
+  display: grid;
+  grid: "clouds visibility";
+}
+
+.weatherImage {
+  width: 150px;
+}
+
+.containerTitleWeather {
+  display: grid;
+  text-align: end;
+  grid: "image title";
+}
+
+.Button {
+  width: 100%;
+  padding: 5%;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: 0.25s;
+  border-top: transparent;
+  border-radius: 0px 15px;
+  border-left: transparent;
+  border-right: transparent;
+  background-color: var(--white);
+}
+
+.Button:hover {
+  color: var(--white);
+  background-color: var(--black-transparency);
+}
