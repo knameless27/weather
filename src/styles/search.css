@@ -37,7 +37,7 @@
   padding: 15px;
   display: grid;
   font-size: 2rem;
-  overflow: hidden;
+  overflow: visible;
   max-width: 1800px;
   transition: 0.39s;
   grid: "info image";

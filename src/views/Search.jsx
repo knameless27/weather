@@ -12,12 +12,6 @@ function Search() {
   useEffect(() => {
     document.querySelector(".card").classList.add("initCard");
   }, []);
-  useEffect(() => {
-    axiosWeather.getCity("").then((res) => {
-      setOptions(res.geonames)
-    })
-    // console.log(options);
-  }, [query])
 
   function anotherPlace() {
     document.querySelector(".card").classList.remove("initCard");
@@ -29,23 +23,28 @@ function Search() {
 
   function onChangeData(newData) {
     setQuery(newData);
-    // axiosWeather.getCityWeather("london").then((res) => {
-    //   const city = res[0]
-    //   axiosWeather.currentWeather({lat: city.lat, lon: city.lon})
-    // })
+    axiosWeather.currentWeather({lat: newData.lat, lon: newData.lng})
+  }
+  
+  function onSearch(newData) {
+    axiosWeather.getCity(newData).then((res) => {
+      const newOptions = res.geonames.map((city) => {
+        city.name = city.name + " - " + city.countryName
+        return city
+      })
+      setOptions(newOptions)
+    })
   }
 
   return (
     <div className="card">
       <div className="info">
-        <h1 className="city">
-          titulos{/* {weather.name} - {weather.sys.country} */}
-        </h1>
         <Input
           data={query}
           query="name"
           options={options}
           onChangeData={onChangeData}
+          onSearch={onSearch}
         />
         <div className="basicInfo">
           <h4>clouds: {/* {weather.clouds.all} */}%</h4>
