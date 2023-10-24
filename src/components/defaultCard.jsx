@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { getImage } from "../mixins/main.js";
 import "../styles/defaultCard.css";
 
 function DefaultCard(props) {
@@ -54,32 +55,6 @@ function DefaultCard(props) {
       </div>
     </div>
   );
-}
-
-function getImage(icon) {
-  const weather = {
-    "01d":
-      "https://cdn-icons-png.flaticon.com/512/2698/2698194.png?ga=GA1.1.1295202294.1695664206",
-    "02d":
-      "https://cdn-icons-png.flaticon.com/512/2932/2932604.png?ga=GA1.1.1295202294.1695664206",
-    "03d":
-      "https://cdn-icons-png.flaticon.com/512/3208/3208676.png?ga=GA1.1.1295202294.1695664206",
-    "04d":
-      "https://cdn-icons-png.flaticon.com/512/414/414927.png?ga=GA1.1.1295202294.1695664206",
-    "09d":
-      "https://cdn-icons-png.flaticon.com/512/1164/1164945.png?ga=GA1.1.1295202294.1695664206",
-    "10d":
-      "https://cdn-icons-png.flaticon.com/512/3093/3093390.png?ga=GA1.1.1295202294.1695664206",
-    "11d":
-      "https://cdn-icons-png.flaticon.com/512/1146/1146860.png?ga=GA1.1.1295202294.1695664206",
-    "13d":
-      "https://cdn-icons-png.flaticon.com/512/4040/4040796.png?ga=GA1.1.1295202294.1695664206",
-    "50d":
-      "https://cdn-icons-png.flaticon.com/512/3861/3861484.png?ga=GA1.1.1295202294.1695664206",
-  };
-
-  if (weather.hasOwnProperty(icon)) return weather[icon];
-  return weather["01d"];
 }
 
 export default DefaultCard;

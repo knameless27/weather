@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DefaultCard from "./components/defaultCard";
 import weatherApi from "./services/weatherApi.js";
+import { getColor } from "./mixins/main";
 import "./styles/App.css";
 
 function App() {
@@ -58,23 +59,6 @@ function App() {
       </div>
     </div>
   );
-}
-
-function getColor(icon) {
-  const weather = {
-    "01d": "linear-gradient(to right, #f6d365 0%, #fda085 100%)",
-    "02d": "linear-gradient(to right, #96fbc4 0%, #f9f586 100%)",
-    "03d": "linear-gradient(to right, #ebc0fd 0%, #d9ded8 100%)",
-    "04d": "linear-gradient(to right, #93a5cf 0%, #e4efe9 100%)",
-    "09d": "linear-gradient(to right, #4facfe 0%, #00f2fe 100%)",
-    "10d": "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)",
-    "11d": "linear-gradient(to right, #30cfd0 0%, #330867 100%)",
-    "13d": "linear-gradient(to right, #cfd9df 0%, #e2ebf0 100%)",
-    "50d": "linear-gradient(to right, #accbee 0%, #e7f0fd 100%)",
-  };
-
-  if (weather.hasOwnProperty(icon)) return weather[icon];
-  return weather["01d"];
 }
 
 export default App;

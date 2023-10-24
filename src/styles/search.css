@@ -47,6 +47,11 @@
   box-shadow: 31px 38px 5px 0px var(--black-transparency);
 }
 
+
+.input {
+  margin-top: 10%;
+}
+
 .card:hover {
   padding: 1%;
 }
@@ -86,6 +91,7 @@
 }
 
 .Button {
+  margin-top: 10%;
   width: 100%;
   padding: 5%;
   cursor: pointer;
